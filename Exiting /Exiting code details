@@ -1,0 +1,5 @@
+Declares the _start label as the entry point.
+Loads r7 with 1, the syscall number for the exit system call.
+Loads r0 with 0, the exit code (0 typically means success).
+Uses the svc (Supervisor Call) instruction to make a system call
+  in this case, it tells the operating system to terminate the program.
