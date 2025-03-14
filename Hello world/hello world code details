@@ -1,0 +1,14 @@
+.global makes the _start label visible to the linker, so the OS knows where to start running the program.
+_start is the program’s entry point — the first instruction the OS executes when the program runs.
+r7 is the register for syscall numbers in ARM Linux.
+4 is the syscall number for write()  - like hey i want to write some data
+For write, the arguments are:
+r0 → File descriptor (1 for stdout)
+r1 → Address of the data (like a string)
+r2 → Number of bytes to write
+
+We set r0 to 1 because that tells the write syscall to send the output to stdout, which is usually your terminal screen.
+ldr r1, =hello loads the memory address of the string into r1
+13 is the length of the string "hello world!\n"
+svc 0 (supervisor call) tells the Linux kernel to execute the syscall.
+.ascii stores the text in memory without a null terminator.
